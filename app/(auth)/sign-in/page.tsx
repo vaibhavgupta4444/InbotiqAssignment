@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/card";
 import Link from "next/link";
 
-const SignInPage = () => {
+function SignInForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [formData, setFormData] = useState({
@@ -169,6 +169,16 @@ const SignInPage = () => {
       </Card>
     </div>
   );
-};
+}
 
-export default SignInPage;
+export default function SignInPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex min-h-screen items-center justify-center bg-slate-50">
+        <p className="text-lg">Loading...</p>
+      </div>
+    }>
+      <SignInForm />
+    </Suspense>
+  );
+}

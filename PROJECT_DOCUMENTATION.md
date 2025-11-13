@@ -142,6 +142,7 @@ A comprehensive Next.js application featuring authentication, role-based access 
 ### Authentication
 - `POST /api/auth/sign-up` - Register new user
 - `POST /api/auth/sign-in` - Sign in user
+- `GET /api/auth/me` - Get current user information (requires userId or cookie)
 
 ### Items CRUD
 - `GET /api/items` - Get all items (with filters, search, pagination)
